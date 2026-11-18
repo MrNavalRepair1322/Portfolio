@@ -1,0 +1,864 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Stephen L. Campbell</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Stephen L. Campbell: from naval nuclear trades to Lead Forward Deployed Engineer. A career told in three acts.">
+
+<script>
+/* =====================================================================
+   EDIT YOUR LINKS HERE
+   ---------------------------------------------------------------------
+   Replace the four placeholder values below with your real links.
+   They fill the Contact section at the end of the page automatically.
+   - email:    your email address (shown as text with a Copy button)
+   - linkedin: full URL to your LinkedIn profile
+   - github:   full URL to your GitHub profile
+   - resume:   full URL to your resume PDF hosted somewhere public
+               (Google Drive share link, GitHub Pages, etc.). It opens
+               in a new tab, where the visitor can save it.
+   ===================================================================== */
+window.CONTACT = {
+  email:    "your.name@example.com",
+  linkedin: "https://www.linkedin.com/in/your-profile",
+  github:   "https://github.com/your-username",
+  resume:   "https://example.com/stephen-campbell-resume.pdf"
+};
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Saira+Extra+Condensed:wght@700;800&family=Saira+Stencil+One&display=swap">
+
+<style>
+/* Layout: a sticky film frame (slate bar / picture / caption bar) that scroll drives
+   through the scenes, pose to pose. A credits roll with contact links follows.
+   Single cinematic dark look, by choice. */
+:root{
+  --ink:#0e0b0d;
+  --paper:#efe6d2;
+  --dim:#a39887;
+  --dawn:#e2572b;
+  --sun:#f2b33d;
+  --tide:#38b6a8;
+  --alarm:#d0202a;
+  --acc:var(--dawn);
+  --f-stencil:"Saira Stencil One", Impact, "Arial Narrow Bold", sans-serif;
+  --f-disp:"Saira Extra Condensed", "Arial Narrow", Impact, sans-serif;
+  --f-body:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, "Roboto Mono", Menlo, monospace;
+  color-scheme:dark;
+}
+html,body{background:var(--ink);color:var(--paper)}
+body{font-family:var(--f-body);-webkit-font-smoothing:antialiased;overflow:hidden;overscroll-behavior:none}
+*,*::before,*::after{box-sizing:border-box}
+
+/* ---------- horizontal swipe track ----------
+   The whole page scrolls sideways. Each beat is a snap point, so one swipe = one beat. */
+#scroller{
+  position:fixed; left:0; right:0;
+  top:env(safe-area-inset-top,0px); bottom:env(safe-area-inset-bottom,0px);
+  display:flex; overflow-x:auto; overflow-y:hidden;
+  scroll-snap-type:x mandatory; overscroll-behavior:contain;
+  scrollbar-width:none; touch-action:pan-x;
+}
+#scroller::-webkit-scrollbar{display:none}
+#story{position:relative; flex:0 0 auto; height:100%}
+.snap-pt{position:absolute; top:0; width:1px; height:1px; scroll-snap-align:start; scroll-snap-stop:always}
+
+/* ---------- the film frame ---------- */
+.stage{
+  position:sticky; left:0; top:0;
+  width:100vw; height:100%;
+  display:flex; flex-direction:column;
+  overflow:hidden; background:var(--ink);
+}
+.stage > .slate,.stage > .pic,.stage > .cap{width:100%; max-width:560px; margin-inline:auto}
+.slate{
+  flex:0 0 auto; display:flex; align-items:center; justify-content:space-between; gap:12px;
+  padding-block:12px 10px;
+  padding-left:max(16px, env(safe-area-inset-left,0px));
+  padding-right:max(16px, env(safe-area-inset-right,0px));
+  font:500 11px/1.2 var(--f-mono); letter-spacing:.14em; text-transform:uppercase;
+}
+.slate .act{color:var(--paper); min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.slate .right{display:flex; align-items:center; gap:12px; flex:0 0 auto}
+.slate .yr{color:var(--acc); font-variant-numeric:tabular-nums}
+.reel{display:flex; gap:4px; margin:0; padding:0; list-style:none}
+.reel li{width:20px; height:16px; display:grid; place-items:center; font-size:9px; letter-spacing:0; background:#221c1f; color:var(--dim)}
+.reel li.on{background:var(--acc); color:var(--ink)}
+
+.pic{flex:1 1 auto; min-height:0; position:relative; overflow:hidden; background:#000}
+.pic svg{position:absolute; inset:0; width:100%; height:100%; display:block}
+#pic .m{font-family:var(--f-mono); font-weight:500; letter-spacing:.06em}
+#pic .st{font-family:var(--f-stencil)}
+
+.cap{
+  flex:0 0 auto; min-height:30%;
+  display:flex; flex-direction:column; gap:10px;
+  padding-block:14px 18px;
+  padding-left:max(16px, env(safe-area-inset-left,0px));
+  padding-right:max(16px, env(safe-area-inset-right,0px));
+}
+.cap .k{font:500 11px/1.3 var(--f-mono); letter-spacing:.16em; text-transform:uppercase; color:var(--acc); margin:0}
+.cap .l{font-size:clamp(15px, 4.2vw, 18px); line-height:1.5; margin:0; max-width:34em; text-wrap:pretty}
+/* skill bullets: square markers, snapped in one after another */
+.pts{display:flex; flex-direction:column; gap:9px; margin:0; padding:0; list-style:none}
+.pts li{
+  position:relative; padding-left:22px;
+  font:600 clamp(16px, 4.6vw, 19px)/1.3 var(--f-body); text-wrap:pretty;
+  animation:snap .16s steps(2,end) both; animation-delay:calc(var(--i) * 110ms + 60ms);
+}
+.pts li::before{content:""; position:absolute; left:0; top:.36em; width:10px; height:10px; background:var(--acc); clip-path:polygon(0 0, 100% 0, 100% 100%, 30% 100%, 0 70%)}
+.snap{animation:snap .16s steps(2,end) both}
+@keyframes snap{from{transform:translateX(16px)} to{transform:none}}
+.hint{display:flex; align-items:center; gap:8px; font:500 11px/1 var(--f-mono); letter-spacing:.2em; text-transform:uppercase; color:var(--sun)}
+.hint .sw{display:inline-block; font-weight:500; animation:nudge 1s steps(2,end) infinite}
+@keyframes nudge{50%{transform:translateX(-8px)}}
+
+/* title over the picture (opening and finale) */
+.ttl{position:absolute; left:0; right:0; top:6%; text-align:center; padding-inline:16px; pointer-events:none}
+.ttl .tk{font:500 11px/1 var(--f-mono); letter-spacing:.24em; text-transform:uppercase; color:var(--sun); margin:0 0 10px}
+.ttl .tb{font:800 clamp(44px, 14.5vw, 78px)/.86 var(--f-disp); text-transform:uppercase; letter-spacing:.01em; margin:0; color:var(--paper); text-wrap:balance}
+.ttl .ts{font:500 11px/1.4 var(--f-mono); letter-spacing:.14em; text-transform:uppercase; margin:12px 0 0; color:var(--paper)}
+
+/* full-frame act cards */
+.card{position:absolute; inset:0; z-index:5; background:var(--ink); display:grid; place-content:center; text-align:center; padding-inline:16px; gap:14px}
+.card .cn{font:500 13px/1 var(--f-mono); letter-spacing:.34em; text-transform:uppercase; color:var(--acc); margin:0}
+.card .ct{font:400 clamp(60px, 19vw, 118px)/.86 var(--f-stencil); text-transform:uppercase; margin:0; text-wrap:balance}
+.card .cs{font:500 12px/1.5 var(--f-mono); letter-spacing:.12em; text-transform:uppercase; color:var(--dim); margin:0}
+.card.red{background:var(--alarm)}
+.card.red .ct{color:var(--paper); font-size:clamp(64px, 21vw, 130px)}
+.card.red .cs{color:var(--paper)}
+.card.red::before,.card.red::after{content:""; position:absolute; left:0; right:0; height:30px; background:repeating-linear-gradient(45deg, var(--sun) 0 14px, var(--ink) 14px 28px)}
+.card.red::before{top:0} .card.red::after{bottom:0}
+.card.shake{animation:shake .32s steps(4,end) 2}
+@keyframes shake{0%{transform:translate(0,0)}25%{transform:translate(-9px,4px)}50%{transform:translate(7px,-5px)}75%{transform:translate(-4px,-3px)}100%{transform:translate(0,0)}}
+.stage.flash::after{content:""; position:absolute; inset:0; z-index:9; background:var(--paper); animation:flash .2s steps(1,end) forwards; pointer-events:none}
+@keyframes flash{0%{opacity:1}50%{opacity:0}100%{opacity:0}}
+
+/* ---------- character ---------- */
+#ch{--skin:#e7bd98; --skin-sh:#c99471; --hand:var(--skin); --hand-dk:var(--skin-sh)}
+#ch .skin{fill:var(--skin)} #ch .skin-sh{fill:var(--skin-sh)}
+#ch .hair{fill:#2b1e18} #ch .beard{fill:#2a1c16}
+#ch .shirt{fill:var(--shirt)} #ch .shirt-sh{fill:var(--shirt-sh)}
+#ch .sleeve{fill:var(--sleeve)} #ch .sleeve-dk{fill:var(--sleeve-dk)}
+#ch .fore{fill:var(--fore)} #ch .fore-dk{fill:var(--fore-dk)}
+#ch .pant{fill:var(--pant)} #ch .pant-dk{fill:var(--pant-dk)}
+#ch .shoe{fill:var(--shoe)} #ch .hand{fill:var(--hand)} #ch .hand-dk{fill:var(--hand-dk)}
+#ch[data-o="coverall"]{--shirt:#41607a;--shirt-sh:#324b60;--sleeve:#41607a;--sleeve-dk:#2c4255;--fore:#41607a;--fore-dk:#2c4255;--pant:#3a566e;--pant-dk:#2a3f51;--shoe:#2a1d14}
+#ch[data-o="antic"]{--shirt:#e4c34b;--shirt-sh:#c3a334;--sleeve:#e4c34b;--sleeve-dk:#b39528;--fore:#e4c34b;--fore-dk:#b39528;--pant:#e4c34b;--pant-dk:#b39528;--shoe:#efe9da;--hand:#f0ebde;--hand-dk:#cfc8b6}
+#ch[data-o="work"]{--shirt:#6d8db0;--shirt-sh:#56728f;--sleeve:#6d8db0;--sleeve-dk:#4f6883;--fore:#6d8db0;--fore-dk:#4f6883;--pant:#3d3a35;--pant-dk:#2b2925;--shoe:#3a2618}
+#ch[data-o="flannel"]{--shirt:url(#plaid);--shirt-sh:url(#plaid-dk);--sleeve:url(#plaid);--sleeve-dk:url(#plaid-dk);--fore:url(#plaid);--fore-dk:url(#plaid-dk);--pant:#34496b;--pant-dk:#26364f;--shoe:#3a2618}
+#ch[data-o="polo"]{--shirt:#2f6f6a;--shirt-sh:#235652;--sleeve:#2f6f6a;--sleeve-dk:#235652;--fore:#e7bd98;--fore-dk:#c99471;--pant:#a8916a;--pant-dk:#8a7552;--shoe:#4a2e1c}
+#ch[data-o="suit"]{--shirt:#1e2a44;--shirt-sh:#151e33;--sleeve:#1e2a44;--sleeve-dk:#141c30;--fore:#1e2a44;--fore-dk:#141c30;--pant:#1e2a44;--pant-dk:#141c30;--shoe:#7a4627}
+#ch .v{display:none}
+#ch[data-o="coverall"] .v-coverall,#ch[data-o="antic"] .v-antic,#ch[data-o="work"] .v-work,
+#ch[data-o="flannel"] .v-flannel,#ch[data-o="polo"] .v-polo,#ch[data-o="suit"] .v-suit{display:inline}
+#ch[data-o="antic"] .hairg{display:none}
+#ch .it{display:none}
+#ch[data-item="doc"] .it-doc,#ch[data-item="binder"] .it-binder,#ch[data-item="ribbon"] .it-ribbon,#ch[data-item="tablet"] .it-tablet{display:inline}
+#ch.sil *{fill:#140c10 !important}
+
+/* ---------- credits (last panel; scrolls up and down on its own) ---------- */
+.credits-panel{flex:0 0 100vw; height:100%; overflow-y:auto; overscroll-behavior-y:contain; scroll-snap-align:start; touch-action:pan-x pan-y}
+.credits{
+  max-width:560px; margin:0 auto;
+  padding-block:72px 96px;
+  padding-left:max(16px, env(safe-area-inset-left,0px));
+  padding-right:max(16px, env(safe-area-inset-right,0px));
+  text-align:center; display:flex; flex-direction:column; gap:48px;
+}
+.credits .ck{font:500 11px/1 var(--f-mono); letter-spacing:.3em; text-transform:uppercase; color:var(--sun); margin:0 0 12px}
+.credits h2{font:800 clamp(44px, 13vw, 72px)/.88 var(--f-disp); text-transform:uppercase; margin:0; text-wrap:balance}
+.roll{display:flex; flex-direction:column; gap:30px; margin:0}
+.roll div{display:flex; flex-direction:column; gap:6px}
+.roll dt{font:500 10.5px/1.4 var(--f-mono); letter-spacing:.2em; text-transform:uppercase; color:var(--dim)}
+.roll dd{margin:0; font:700 clamp(22px, 6.4vw, 30px)/1.08 var(--f-disp); text-transform:uppercase; letter-spacing:.02em; text-wrap:balance}
+.roll dd small{display:block; margin-top:6px; font:500 11px/1.3 var(--f-mono); letter-spacing:.16em; color:var(--acc-c, var(--sun))}
+.credits h3{font:400 clamp(40px, 12vw, 64px)/.9 var(--f-stencil); text-transform:uppercase; margin:0 0 18px}
+.links{display:grid; grid-template-columns:1fr 1fr; gap:8px; text-align:left}
+.links a,.links button{
+  display:flex; flex-direction:column; gap:4px; justify-content:space-between; min-height:72px;
+  padding:12px 14px; background:#1b1619; color:var(--paper); text-decoration:none; border:0; cursor:pointer;
+  font:700 22px/1 var(--f-disp); text-transform:uppercase; letter-spacing:.03em; text-align:left;
+  clip-path:polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+}
+.links a span,.links button span{font:500 10px/1.2 var(--f-mono); letter-spacing:.14em; color:var(--dim); text-transform:uppercase}
+.links a:hover,.links a:focus-visible{background:var(--sun); color:var(--ink)}
+.links a:hover span,.links a:focus-visible span{color:var(--ink)}
+.links .wide{grid-column:1 / -1; background:var(--paper); color:var(--ink)}
+.links .wide span{color:#5a5248}
+.email{display:flex; align-items:center; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:12px}
+.email code{font:500 13px/1.3 var(--f-mono); color:var(--paper); user-select:all; word-break:break-all}
+.email button{font:500 10.5px/1 var(--f-mono); letter-spacing:.14em; text-transform:uppercase; background:transparent; color:var(--sun); border:1.5px solid var(--sun); padding:7px 10px; cursor:pointer}
+.again{align-self:center; font:500 11px/1 var(--f-mono); letter-spacing:.2em; text-transform:uppercase; background:transparent; color:var(--dim); border:0; padding:12px; cursor:pointer}
+a:focus-visible,button:focus-visible{outline:2px solid var(--sun); outline-offset:3px}
+
+@media (prefers-reduced-motion: reduce){
+  .pts li,.snap,.card.shake,.stage.flash::after,.hint .sw{animation:none !important}
+}
+</style>
+
+<main id="scroller">
+<div id="story">
+  <div class="stage" id="stage">
+    <header class="slate">
+      <span class="act" id="act">Norfolk Naval Shipyard</span>
+      <span class="right">
+        <span class="yr" id="yr"></span>
+        <ol class="reel" id="reel" aria-label="Act">
+          <li>I</li><li>II</li><li>!</li><li>III</li>
+        </ol>
+      </span>
+    </header>
+
+    <div class="pic">
+      <svg id="pic" viewBox="0 0 400 480" preserveAspectRatio="xMidYMid meet" aria-hidden="true"></svg>
+      <div class="ttl" id="ttl" hidden>
+        <p class="tk" id="ttl-k"></p>
+        <h1 class="tb" id="ttl-b"></h1>
+        <p class="ts" id="ttl-s"></p>
+      </div>
+    </div>
+
+    <div class="cap" id="cap" aria-live="polite"></div>
+
+    <div class="card" id="card" hidden>
+      <p class="cn" id="card-n"></p>
+      <p class="ct" id="card-t"></p>
+      <p class="cs" id="card-s"></p>
+    </div>
+  </div>
+</div>
+
+<!-- Contact links below are filled in from window.CONTACT at the top of this file. -->
+<div class="credits-panel" id="credits-panel">
+<section class="credits" id="credits">
+  <div>
+    <p class="ck">A career in three acts</p>
+    <h2>Stephen L. Campbell</h2>
+  </div>
+  <div>
+    <h3>Contact</h3>
+    <div class="links">
+      <a id="lnk-email" href="#">Email<span>Send a message</span></a>
+      <a id="lnk-linkedin" href="#" target="_blank" rel="noopener">LinkedIn<span>Profile</span></a>
+      <a id="lnk-github" href="#" target="_blank" rel="noopener">GitHub<span>Code</span></a>
+      <a id="lnk-resume" class="wide" href="#" target="_blank" rel="noopener">Resume<span>Opens the PDF in a new tab</span></a>
+    </div>
+    <div class="email"><code id="email-text"></code><button type="button" id="copy-email">Copy</button></div>
+  </div>
+  <dl class="roll">
+    <div><dt>Act I · Norfolk Naval Shipyard</dt><dd>Nuclear Sheetmetal Mechanic<small>7 years</small></dd></div>
+    <div><dt>Act II · Continuous Training &amp; Development</dt><dd>Subject Matter Expert, Instructor, Coordinator, Acting CTD Leader<small>10 years</small></dd></div>
+    <div><dt>The Break</dt><dd>Shipyard Hackathon, Third Place. BOTS Team Developer</dd></div>
+    <div><dt>Act III · Code 700</dt><dd>Lead Forward Deployed Engineer<small>Now</small></dd></div>
+  </dl>
+  <button type="button" class="again" id="again">◀ Watch again</button>
+</section>
+</div>
+</main>
+
+<script>
+(function(){
+"use strict";
+
+/* ---------- contact wiring ---------- */
+const CT = window.CONTACT || {};
+const $ = id => document.getElementById(id);
+$("lnk-email").href = "mailto:" + CT.email;
+$("lnk-linkedin").href = CT.linkedin;
+$("lnk-github").href = CT.github;
+$("lnk-resume").href = CT.resume;
+$("email-text").textContent = CT.email;
+$("copy-email").addEventListener("click", e => {
+  const b = e.currentTarget;
+  const done = () => { b.textContent = "Copied"; setTimeout(() => b.textContent = "Copy", 1600); };
+  const pick = () => { const r = document.createRange(); r.selectNodeContents($("email-text")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = "Selected"; };
+  try { navigator.clipboard.writeText(CT.email).then(done, pick); } catch(_) { pick(); }
+});
+$("again").addEventListener("click", () => { $("credits-panel").scrollTop = 0; $("scroller").scrollTo({left:0, behavior:"smooth"}); });
+
+/* ---------- tiny SVG helpers ---------- */
+const R = (x,y,w,h,f,a="") => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${f}" ${a}/>`;
+const P = (pts,f,a="") => `<polygon points="${pts}" fill="${f}" ${a}/>`;
+const C = (cx,cy,r,f,a="") => `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${f}" ${a}/>`;
+const T = (x,y,s,f,t,a="") => `<text x="${x}" y="${y}" font-size="${s}" fill="${f}" ${a}>${t}</text>`;
+const L = (x1,y1,x2,y2,c,w,a="") => `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${c}" stroke-width="${w}" ${a}/>`;
+let seed = 11; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+const INK = "#14111b", PAPER = "#f3ead8";
+
+function crane(x,h,c,jl,jr,light){
+  const t = 400 - h;
+  return R(x,t,10,h,c) + R(x-jl,t,jl+jr+10,7,c) + R(x-4,t+7,18,12,c) + R(x-jl,t+7,16,14,c)
+       + R(x+jr*0.7,t+7,1.5,70,c) + R(x+jr*0.7-4,t+77,10,6,c) + (light ? C(x+5,t-4,2.6,"#ff4a3d") : "");
+}
+function sub(c,hi){
+  return `<path d="M40 342 L120 302 L540 300 Q632 304 642 340 Q632 376 540 380 L120 378 Z" fill="${c}"/>`
+    + P("40,342 20,298 33,298 62,332",c) + P("418,302 427,250 476,250 484,302",c) + R(402,266,98,5,c)
+    + R(120,300,420,3,hi) + R(427,250,49,3,hi);
+}
+function fig(x,h,c){
+  const s = h/120;
+  return `<g transform="translate(${x} ${400-h}) scale(${s})" fill="${c}"><circle cx="0" cy="12" r="11"/><polygon points="-15,26 15,26 17,72 -17,72"/><rect x="-14" y="72" width="12" height="48"/><rect x="2" y="72" width="12" height="48"/></g>`;
+}
+function glyph(i,cx,cy,col){
+  if (i % 3 === 0) return C(cx,cy,11,col);
+  if (i % 3 === 1) return R(cx-10,cy-10,20,20,col);
+  return P(`${cx},${cy-12} ${cx+12},${cy+10} ${cx-12},${cy+10}`,col);
+}
+const ov = (name, inner) => `<g data-ov="${name}" style="display:none">${inner}</g>`;
+
+/* ---------- defs ---------- */
+const DEFS = `<defs>
+<linearGradient id="g-dawn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b1d3a"/><stop offset=".42" stop-color="#8a2f45"/><stop offset=".72" stop-color="#e2572b"/><stop offset="1" stop-color="#f2b33d"/></linearGradient>
+<linearGradient id="g-night" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#060a15"/><stop offset=".6" stop-color="#12213b"/><stop offset="1" stop-color="#22385a"/></linearGradient>
+<linearGradient id="g-cone" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff2c8" stop-opacity=".38"/><stop offset="1" stop-color="#fff2c8" stop-opacity="0"/></linearGradient>
+<pattern id="haz" width="24" height="24" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="24" height="24" fill="#f2b33d"/><rect width="12" height="24" fill="#0e0b0d"/></pattern>
+<pattern id="plaid" width="12" height="12" patternUnits="userSpaceOnUse"><rect width="12" height="12" fill="#a0302c"/><rect y="4" width="12" height="4" fill="#3a1414" opacity=".7"/><rect x="4" width="4" height="12" fill="#3a1414" opacity=".6"/><rect y="10" width="12" height="1" fill="#e0a868" opacity=".55"/></pattern>
+<pattern id="plaid-dk" width="12" height="12" patternUnits="userSpaceOnUse"><rect width="12" height="12" fill="#6e1f1e"/><rect y="4" width="12" height="4" fill="#250b0b" opacity=".7"/><rect x="4" width="4" height="12" fill="#250b0b" opacity=".6"/></pattern>
+<g id="tre"><circle r="1.7"/><path id="tb" d="M1.3 2.25 L4 6.93 A8 8 0 0 1 -4 6.93 L-1.3 2.25 A2.6 2.6 0 0 0 1.3 2.25Z"/><use href="#tb" transform="rotate(120)"/><use href="#tb" transform="rotate(240)"/></g>
+</defs>`;
+
+/* ---------- scenes ---------- */
+function horizon(){
+  return `<g id="s-horizon" class="scn" style="display:none">
+  <g class="L" data-f="0">${R(0,0,400,480,"url(#g-dawn)")}${C(200,330,150,"#f7cf6a")}${R(0,186,150,5,"#f08a4b")}${R(250,212,170,4,"#f6a65a")}${R(60,238,120,3,"#f08a4b")}</g>
+  <g class="L" data-f="0">${crane(24,180,"#7c3442",18,80)}${crane(352,214,"#7c3442",70,30)}
+    <g transform="translate(70 245) scale(.46)">${sub("#5d2532","#5d2532")}</g>
+    ${R(0,372,90,28,"#6a2c3a")}${R(318,364,82,36,"#6a2c3a")}</g>
+  <g class="L" data-f="0">${R(0,398,400,82,"#1e1419")}${R(0,398,400,4,"#c4532f")}</g></g>`;
+}
+
+function dock(id, night){
+  const c = night
+    ? {sky:"g-night", orb:"#e9e3cc", far:"#1f2b47", bld:"#18223a", sub:"#070b15", hi:"#2c4a6e", blk:"#141c2c", pier:"#0a0e18", edge:"#38b6a8"}
+    : {sky:"g-dawn",  orb:"#f7cf6a", far:"#7c3442", bld:"#6a2c3a", sub:"#22161f", hi:"#5a2a36", blk:"#3a2530", pier:"#1e1419", edge:"#c4532f"};
+  let s = `<g id="s-${id}" class="scn" style="display:none"><g class="L" data-f="0">${R(0,0,400,480,`url(#${c.sky})`)}`;
+  if (night){ for (let i=0;i<40;i++) s += C((rnd()*400).toFixed(1),(rnd()*230).toFixed(1),(rnd()*1.2+.4).toFixed(2),"#e9e3cc",`opacity="${(.35+rnd()*.65).toFixed(2)}"`); s += C(304,96,38,c.orb); }
+  else { s += C(250,296,122,c.orb) + R(-20,168,250,6,"#f08a4b") + R(170,198,300,4,"#f6a65a") + R(30,226,190,3,"#f08a4b"); }
+  s += `</g><g class="L" data-f=".15">${crane(40,250,c.far,40,110,night)}${crane(316,300,c.far,60,120,night)}${R(0,350,120,50,c.bld)}${R(150,330,60,70,c.bld)}${R(360,342,140,58,c.bld)}</g>`;
+  // mid: submarine in drydock
+  s += `<g class="L" data-f=".45">${sub(c.sub,c.hi)}`;
+  [150,220,290,360,430,500,570].forEach(x => s += R(x,380,24,18,c.blk));
+  s += R(498,240,3,62,c.blk) + R(528,240,3,62,c.blk) + R(496,240,40,3,c.blk) + R(496,270,40,3,c.blk);
+  if (night){
+    s += ov("drone",
+      P("296,200 304,200 372,300 228,300","#38b6a8",`opacity=".13"`)
+      + R(270,183,60,3,"#9aa5b5") + R(258,177,22,3,"#cfd6e0") + R(320,177,22,3,"#cfd6e0") + R(268,180,3,6,"#9aa5b5") + R(329,180,3,6,"#9aa5b5")
+      + R(284,184,32,10,"#d9d4c4") + C(300,198,4,"#38b6a8")
+      + R(244,314,64,40,"none",`stroke="#f2b33d" stroke-width="2.2"`) + R(244,302,70,11,"#f2b33d") + T(247,310.5,7.4,INK,"CORROSION .91",`class="m"`)
+      + R(422,256,58,40,"none",`stroke="#f2b33d" stroke-width="2.2"`) + R(410,244,70,11,"#f2b33d") + T(413,252.5,7.4,INK,"WELD SEAM .88",`class="m"`));
+  }
+  s += `</g><g class="L" data-f="1">${R(0,398,800,82,c.pier)}${R(0,398,800,4,c.edge)}${R(40,384,14,14,c.blk)}${R(37,381,20,5,c.blk)}${R(700,384,14,14,c.blk)}${R(697,381,20,5,c.blk)}`;
+  if (night){
+    [70,430,720].forEach(x => s += P(`${x-8},186 ${x+14},186 ${x+130},400 ${x-120},400`,"url(#g-cone)") + R(x,180,6,220,"#1a2236") + R(x-10,172,26,10,"#2a3550") + R(x-8,182,22,3,"#fff4cf"));
+  } else {
+    [280,380,480,580].forEach(x => s += R(x,348,6,50,"#e8c547") + R(x,356,6,6,"#c2185b") + R(x,372,6,6,"#c2185b"));
+    s += L(283,354,583,354,"#c2185b",3) + L(283,354,583,354,"#e8c547",3,`stroke-dasharray="9 9"`);
+    s += R(404,298,54,42,"#e8c547") + R(404,298,54,11,"#c2185b") + T(431,306.5,7,"#e8c547","CAUTION",`class="m" text-anchor="middle"`)
+       + `<use href="#tre" transform="translate(431 325) scale(1.35)" fill="#c2185b"/>`;
+  }
+  s += `</g>`;
+  if (night){
+    // agent gallery
+    let g = T(168,30,10,"#38b6a8","CODE 700 · AGENT GALLERY",`class="m"`);
+    for (let r=0;r<2;r++) for (let k=0;k<3;k++){ const x=168+k*74, y=40+r*74, i=r*3+k;
+      g += R(x,y,62,62,"#0d2530",`stroke="#38b6a8" stroke-width="2"`) + glyph(i,x+31,y+28,i%2?"#f2b33d":"#38b6a8") + R(x+12,y+48,38,4,"#2c5966"); }
+    s += ov("gallery", g);
+    // QA agent
+    let q = T(168,30,10,"#38b6a8","QA AGENT",`class="m"`) + C(220,70,24,"#38b6a8") + R(206,64,9,4,INK) + R(225,64,9,4,INK);
+    [[262,52,-8],[300,64,6],[334,46,-4],[280,100,10],[322,108,-6]].forEach(([x,y,r]) => q += R(x,y,26,32,PAPER,`transform="rotate(${r} ${x+13} ${y+16})"`) + R(x+5,y+9,16,2.5,"#8a8178",`transform="rotate(${r} ${x+13} ${y+16})"`));
+    [["SORT",172],["ANALYZE",242],["REPORT",312]].forEach(([t,x]) => q += R(x,168,62,52,"#14324a") + R(x,168,62,6,"#38b6a8") + T(x+31,200,9,PAPER,t,`class="m" text-anchor="middle"`));
+    s += ov("qa", q);
+    // predictive maintenance
+    let pm = R(164,30,220,160,"#0b1a2a",`stroke="#38b6a8" stroke-width="2"`) + T(176,50,9,"#38b6a8","EQUIPMENT HEALTH",`class="m"`);
+    for (let i=0;i<4;i++) pm += R(176,70+i*26,196,1,"#1c3448");
+    pm += L(176,80,372,80,"#d0202a",2,`stroke-dasharray="6 5"`) + T(178,74,7.5,"#d0202a","FAILURE THRESHOLD",`class="m"`);
+    pm += `<polyline points="176,170 204,166 230,168 254,158 276,150 296,136 316,120 336,100 352,86" fill="none" stroke="#38b6a8" stroke-width="3"/>`;
+    pm += `<polyline points="352,86 372,72" fill="none" stroke="#f2b33d" stroke-width="3" stroke-dasharray="4 4"/>` + C(352,86,6,"#f2b33d") + T(346,108,8,"#f2b33d","FLAG EARLY",`class="m" text-anchor="end"`);
+    s += ov("pm", pm);
+    // partners
+    let pt = "";
+    [["PALANTIR",188],["GAMEPLAN",260],["AIR",332]].forEach(([t,x],i) => pt += fig(x,124-i*4,"#24314f") + R(x-31,248+i*4,62,14,"#f2b33d") + T(x,258+i*4,8,INK,t,`class="m" text-anchor="middle"`));
+    s += ov("partners", pt);
+  } else {
+    // extreme close-up split screen
+    let e = R(0,0,400,480,"#0e0b0d") + R(0,36,400,176,"#e7bd98") + R(0,36,400,28,"#c99471")
+      + P("66,96 176,86 180,102 70,110","#2b1e18") + P("224,86 334,96 330,110 220,102","#2b1e18")
+      + P("78,142 128,122 174,142 128,156",PAPER) + C(132,140,12,"#1a1412")
+      + P("226,142 272,122 322,142 272,156",PAPER) + C(276,140,12,"#1a1412")
+      + R(188,112,24,100,"#c99471");
+    e += R(0,226,400,218,PAPER) + R(0,226,400,28,"#d8cdb4") + T(44,245,10,INK,"WORK PROCEDURE · VERIFY, THEN SIGN",`class="m"`);
+    for (let i=0;i<6;i++){
+      e += R(44,270+i*26,15,15,"none",`stroke="${INK}" stroke-width="2"`) + R(72,275+i*26,210-(i%3)*40,6,"#9b9084");
+      if (i<4) e += `<polyline points="${46},${277+i*26} ${51},${282+i*26} ${61},${266+i*26}" fill="none" stroke="#d0202a" stroke-width="3"/>`;
+    }
+    e += P("300,444 400,372 400,444","#e7bd98") + `<rect x="300" y="330" width="9" height="96" fill="${INK}" transform="rotate(38 304 378)"/>`;
+    s += ov("eyes", e);
+  }
+  return s + `</g>`;
+}
+
+function shop(){
+  let s = `<g id="s-shop" class="scn" style="display:none"><g class="L" data-f="0">${R(0,0,400,480,"#4b3a2c")}${R(0,0,400,40,"#3a2c21")}</g><g class="L" data-f=".4">`;
+  for (let i=0;i<4;i++){ const x=20+i*120; s += P(`${x},140 ${x+80},140 ${x+160},400 ${x+50},400`,"#f2b33d",`opacity=".12"`) + R(x,50,80,90,"#f0b350") + R(x+38,50,4,90,"#4b3a2c") + R(x,92,80,4,"#4b3a2c"); }
+  s += `</g><g class="L" data-f="1">${R(250,170,130,84,"#5d4835")}`;
+  s += R(266,184,8,54,"#2f241b") + R(282,184,8,40,"#2f241b") + R(298,184,26,8,"#2f241b") + R(330,184,8,50,"#2f241b") + C(358,200,10,"#2f241b") + R(346,224,24,8,"#2f241b");
+  s += R(220,320,200,12,"#2b2018") + R(230,332,8,68,"#2b2018") + R(404,332,8,68,"#2b2018");
+  s += P("252,320 272,278 334,278 354,320","#8d9ba3") + P("334,278 354,320 336,320","#6c7a83") + R(276,262,40,12,PAPER) + T(296,271,7,INK,"MOCKUP",`class="m" text-anchor="middle"`);
+  s += R(0,400,520,80,"#2b211a") + R(0,408,520,3,"#d7a73b") + `</g></g>`;
+  return s;
+}
+
+function classroom(){
+  let s = `<g id="s-class" class="scn" style="display:none"><g class="L" data-f="0">${R(0,0,400,480,"#27403b")}${C(70,62,16,"#d9d0bd")}${R(69,50,2,13,INK)}${R(70,61,9,2,INK)}</g>`;
+  s += `<g class="L" data-f=".5">${R(150,74,250,170,"#5a4330")}${R(158,82,234,154,"#20352b")}`;
+  s += T(170,106,11,"#dbe4d3","CONTAMINATION CONTROL",`class="m"`);
+  s += R(172,122,118,70,"none",`stroke="#dbe4d3" stroke-width="2" stroke-dasharray="6 5"`) + `<use href="#tre" transform="translate(231 157) scale(2)" fill="#dbe4d3"/>`;
+  s += T(176,214,9,"#dbe4d3","BOUNDARY · STEP-OFF PAD",`class="m"`);
+  s += T(306,134,11,"#dbe4d3","1 READ",`class="m"`) + T(306,156,11,"#dbe4d3","2 VERIFY",`class="m"`) + T(306,178,11,"#dbe4d3","3 SIGN",`class="m"`);
+  s += `</g><g class="L" data-f="1">${R(0,400,480,80,"#1b2826")}</g></g>`;
+  return s;
+}
+function classroomFg(){
+  let s = `<g id="fg-class" style="display:none">`;
+  for (let i=0;i<7;i++){ const x=22+i*62, y=440+(i%2)*8; s += C(x,y,17,"#0d1716") + R(x-27,y+12,54,40,"#0d1716"); }
+  return s + `</g>`;
+}
+
+function office(){
+  let s = `<g id="s-office" class="scn" style="display:none"><g class="L" data-f="0">${R(0,0,400,480,"#353b48")}</g><g class="L" data-f=".5">`;
+  const cols = ["#c9b27c","#7b8fa6","#a3483b","#e2d6b8","#5f7a6a","#8a6a9a"];
+  [52,118,184].forEach(y => {
+    let x = -10;
+    while (x < 500){ const w = 9 + Math.floor(rnd()*6), h = 38 + Math.floor(rnd()*14); s += R(x,y+52-h,w,h,cols[Math.floor(rnd()*cols.length)]); x += w + 2; }
+    s += R(-10,y+52,520,6,"#1f232b");
+  });
+  s += `</g><g class="L" data-f="1">${R(0,400,600,80,"#232730")}${R(200,332,340,14,"#5a3f2c")}${R(214,346,10,54,"#3f2b1e")}${R(510,346,10,54,"#3f2b1e")}</g>`;
+  // overlays (screen space)
+  s += ov("pkg", R(232,196,132,176,"#a3483b") + R(232,196,18,176,"#7c2f27") + R(260,222,92,44,PAPER)
+      + T(306,240,9.5,INK,"TRAINING",`class="m" text-anchor="middle"`) + T(306,255,9.5,INK,"PACKAGE",`class="m" text-anchor="middle"`)
+      + R(364,222,14,26,"#f2b33d") + R(364,254,14,26,"#38b6a8") + R(364,286,14,26,PAPER)
+      + T(260,292,8,PAPER,"TECHNICAL DATA",`class="m"`) + T(260,308,8,PAPER,"COURSE MATERIALS",`class="m"`) + T(260,324,8,PAPER,"INSTRUCTOR GUIDE",`class="m"`));
+  let cal = R(214,46,170,128,PAPER) + R(214,46,170,22,"#d0202a") + T(299,61,9,PAPER,"24-MONTH CYCLE",`class="m" text-anchor="middle"`);
+  for (let r=0;r<4;r++) for (let k=0;k<6;k++) cal += R(222+k*27,76+r*23,22,18,(r*6+k)%11===0 ? "#d0202a" : "#d8cdb4");
+  s += ov("concur", cal + `<g transform="rotate(-11 280 250)">${R(208,224,144,50,"none",`stroke="#d0202a" stroke-width="5"`)}${T(280,261,28,"#d0202a","CONCURRED",`class="st" text-anchor="middle"`)}</g>`);
+  let oq = R(248,80,120,160,PAPER) + R(286,72,44,16,"#5a5f6b");
+  for (let i=0;i<5;i++) oq += R(260,104+i*26,13,13,"none",`stroke="${INK}" stroke-width="2"`) + R(282,108+i*26,72,5,"#9b9084") + `<polyline points="262,${110+i*26} 266,${114+i*26} 274,${101+i*26}" fill="none" stroke="#2f6f6a" stroke-width="3"/>`;
+  oq += R(236,300,146,72,"#b39a63") + R(226,312,146,72,"#c9b27c") + R(236,304,44,10,"#c9b27c") + T(300,362,34,INK,"OQE",`class="st" text-anchor="middle"`);
+  oq += C(214,250,22,"none",`stroke="#f2b33d" stroke-width="7"`) + `<rect x="226" y="264" width="9" height="34" fill="#f2b33d" transform="rotate(-40 230 266)"/>`;
+  s += ov("oqe", oq);
+  let fb = R(176,44,214,148,"#ecebe4") + R(176,44,214,6,"#9aa0ab") + L(196,120,330,120,"#1e2a44",4) + R(330,104,52,32,"#d0202a") + T(356,124,8.5,PAPER,"CAUSE",`class="m" text-anchor="middle"`);
+  [[214,250],[256,292],[298,334]].forEach(([a,b]) => fb += L(a,70,b,120,"#1e2a44",3) + L(a,170,b,120,"#1e2a44",3));
+  fb += T(196,66,7.5,"#1e2a44","METHOD",`class="m"`) + T(242,66,7.5,"#1e2a44","PEOPLE",`class="m"`) + T(286,66,7.5,"#1e2a44","PARTS",`class="m"`)
+      + T(196,184,7.5,"#1e2a44","TOOLS",`class="m"`) + T(242,184,7.5,"#1e2a44","DOCS",`class="m"`) + T(286,184,7.5,"#1e2a44","SETTING",`class="m"`);
+  fb += R(196,218,190,18,"#3e8e4a") + P("276,212 300,212 306,244 270,244","#2f7339") + P("278,244 288,244 282,282 270,280","#3e8e4a") + P("290,244 300,244 308,280 296,282","#3e8e4a") + T(206,231,8.5,PAPER,"GREEN BELT",`class="m"`);
+  s += ov("rca", fb);
+  return s + `</g>`;
+}
+
+function warroom(){
+  let s = `<g id="s-war" class="scn" style="display:none"><g class="L" data-f="0">${R(0,0,400,480,"#1d2229")}</g><g class="L" data-f=".4">`;
+  s += R(30,54,346,184,"#0a0d11") + R(38,62,330,168,"#0f2630") + R(38,62,330,18,"#38b6a8") + T(46,75,10,INK,"WAYPOINTS LMS",`class="m"`);
+  for (let i=0;i<8;i++) s += R(50,92+i*15,90+((i*53)%150),5,"#2c5966") + R(270,92+i*15,60,5,"#1f4652");
+  let tr = R(38,80,330,150,"#0f2630");
+  const box = (x,y,w,t) => R(x,y,w,22,"#123844",`stroke="#38b6a8" stroke-width="1.6"`) + T(x+w/2,y+15,8.5,PAPER,t,`class="m" text-anchor="middle"`);
+  tr += L(203,112,128,138,"#38b6a8",1.6) + L(203,112,278,138,"#38b6a8",1.6);
+  [[90,128],[150,128],[240,278],[300,278]].forEach(([x,p]) => tr += L(p,160,x+26,186,"#38b6a8",1.6));
+  tr += box(168,90,70,"CODES") + box(93,138,70,"EVENTS") + box(243,138,70,"EVENTS");
+  [64,124,214,274].forEach(x => tr += box(x,186,52,"CERT"));
+  s += ov("lms", tr);
+  s += ov("migr", R(38,196,330,34,"#0f2630") + T(50,208,8,"#f2b33d","HISTORICAL TRAINING DATA → LMS",`class="m"`) + R(50,214,300,9,"#183c48") + `<rect id="migr" x="50" y="214" width="0" height="9" fill="#f2b33d"/>`);
+  s += `</g><g class="L" data-f="1">${R(0,400,520,80,"#15191e")}${R(300,350,52,50,"#8c7652")}${R(354,360,48,40,"#a48a60")}${R(318,312,44,38,"#9b8259")}${R(410,346,50,54,"#8c7652")}${R(310,330,28,4,"#5f4f36")}${R(364,376,28,4,"#5f4f36")}</g>`;
+  let t4 = ""; [[236,118],[272,124],[308,114],[344,122]].forEach(([x,h]) => t4 += fig(x,h,"#0b0f14"));
+  s += ov("team4", t4);
+  let t6 = ""; for (let i=0;i<6;i++) t6 += fig(206+i*34,106+(i%2)*10,"#163a44");
+  s += ov("team6", t6);
+  return s + `</g>`;
+}
+
+function incident(){
+  return `<g id="s-incident" class="scn" style="display:none"><g class="L" data-f="0">${R(0,0,400,480,"#b5121b")}${P("200,44 296,206 104,206","#f2b33d")}${R(192,92,16,72,"#0e0b0d")}${R(192,174,16,16,"#0e0b0d")}${R(0,400,400,80,"#7a0c12")}${R(0,0,400,30,"url(#haz)")}${R(0,450,400,30,"url(#haz)")}</g></g>`;
+}
+
+function hack(){
+  let s = `<g id="s-hack" class="scn" style="display:none"><g class="L" data-f="0">${R(0,0,400,480,"#14111b")}`;
+  s += ov("medal", T(200,250,168,"#2a2234","3RD",`class="st" text-anchor="middle"`));
+  s += P("172,0 228,0 330,400 70,400","#f4e6c8",`opacity=".08"`) + `<ellipse cx="200" cy="402" rx="130" ry="14" fill="#2b2433"/>`;
+  s += R(60,36,280,42,"#e2572b") + T(200,66,26,INK,"HACKATHON",`class="st" text-anchor="middle"`);
+  s += R(246,332,86,68,"#2b2433") + P("252,332 326,332 316,316 262,316","#38b6a8") + `</g>`;
+  const panel = (y,bg,lab,inner) => R(12,y,376,138,bg) + T(26,y+22,10,INK,lab,`class="m"`) + inner;
+  const docI = (x,y,w,h,lab) => R(x+4,y+4,w,h,INK,`opacity=".25"`) + R(x,y,w,h,PAPER) + R(x+6,y+h*.5,w-12,3,"#9b9084") + R(x+6,y+h*.66,w-16,3,"#9b9084") + (lab ? T(x+w/2,y+17,10,INK,lab,`class="m" text-anchor="middle"`) : "");
+  const arrow = (x,y,w) => R(x,y-3,w,6,INK) + P(`${x+w},${y-10} ${x+w+13},${y} ${x+w},${y+10}`,INK);
+  let y = 24;
+  const p1 = panel(y,"#e2572b","AGENT 01 · INTERVIEWER",
+      C(72,y+82,36,INK) + R(56,y+76,11,5,"#f2b33d") + R(77,y+76,11,5,"#f2b33d")
+    + `<path d="M118 ${y+64} q14 18 0 36" fill="none" stroke="${INK}" stroke-width="5"/><path d="M132 ${y+54} q22 28 0 56" fill="none" stroke="${INK}" stroke-width="5"/>`
+    + arrow(150,y+82,36) + docI(212,y+46,46,60,"IIP") + docI(264,y+46,46,60,"IIP") + docI(316,y+46,46,60,"IIP") + T(287,y+128,8.5,INK,"ONE PER PARTICIPANT",`class="m" text-anchor="middle"`));
+  y = 172;
+  const p2 = panel(y,"#f2b33d","AGENT 02 · COMPILER",
+      R(36,y+42,70,70,INK) + R(50,y+70,12,5,PAPER) + R(72,y+70,12,5,PAPER)
+    + docI(124,y+44,28,38,"") + docI(134,y+54,28,38,"") + docI(144,y+64,28,38,"")
+    + arrow(190,y+82,36) + R(250,y+34,100,94,"#a3483b") + R(250,y+34,14,94,"#7c2f27") + R(272,y+58,66,34,PAPER) + T(305,y+84,24,INK,"MIP",`class="st" text-anchor="middle"`));
+  y = 320;
+  let fbm = R(186,y+36,192,92,PAPER) + L(196,y+84,290,y+84,INK,3) + R(290,y+72,30,24,"#d0202a");
+  [[206,236],[236,266],[262,290]].forEach(([a,b]) => fbm += L(a,y+60,b,y+84,INK,2) + L(a,y+108,b,y+84,INK,2));
+  ["CA-1","CA-2","CA-3"].forEach((t,i) => fbm += T(332,y+64+i*20,9,INK,t,`class="m"`) + `<polyline points="362,${y+59+i*20} 366,${y+63+i*20} 373,${y+53+i*20}" fill="none" stroke="#2f6f6a" stroke-width="2.6"/>`);
+  fbm += T(196,y+52,7.5,INK,"ROOT CAUSE",`class="m"`);
+  const p3 = panel(y,"#38b6a8","AGENT 03 · ANALYST",
+      P(`72,${y+38} 116,${y+122} 28,${y+122}`,INK) + R(60,y+92,24,5,PAPER)
+    + T(126,y+66,8.5,INK,"MIP + NOTES",`class="m"`) + arrow(132,y+86,36) + fbm);
+  s += ov("p1", R(0,0,400,480,"#0e0b0d") + p1) + ov("p2", p2) + ov("p3", p3);
+  return s + `</g>`;
+}
+
+function bots(){
+  let s = `<g id="s-bots" class="scn" style="display:none"><g class="L" data-f="0">${R(0,0,400,480,"#0f1820")}</g><g class="L" data-f=".4">`;
+  for (let r=0;r<3;r++) for (let k=0;k<7;k++){ const x=10+k*64, y=42+r*66, i=r*7+k;
+    s += R(x,y,54,54,"#132b36",`stroke="#1f4a58" stroke-width="2"`) + glyph(i,x+27,y+24,i%4===0?"#f2b33d":"#38b6a8") + R(x+10,y+42,34,4,"#2c5966"); }
+  s += `</g><g class="L" data-f="1">${R(0,400,480,80,"#0c1219")}${R(110,330,330,10,"#1c2a35")}${R(124,340,8,60,"#1c2a35")}${R(420,340,8,60,"#1c2a35")}`;
+  s += R(230,292,50,36,"#0b1218") + R(234,296,42,28,"#38b6a8",`opacity=".75"`) + R(300,292,50,36,"#0b1218") + R(304,296,42,28,"#f2b33d",`opacity=".7"`);
+  s += fig(300,150,"#070c11") + fig(358,142,"#070c11") + `</g>`;
+  s += R(0,14,400,24,"#0f1820") + T(200,30,9.5,"#38b6a8","BOTS · AGENT GALLERY · ALL PRODUCTION CODES",`class="m" text-anchor="middle"`) + `</g>`;
+  return s;
+}
+
+/* ---------- character ---------- */
+const CHAR = `<g id="chw"><g id="ch" data-o="coverall">
+<g id="c-body">
+  <g id="c-aF"><rect class="sleeve-dk" x="-5" y="-3" width="10" height="38" rx="4"/><rect class="skin-sh v v-polo" x="-4.5" y="18" width="9" height="18"/>
+    <g id="c-aF2"><rect class="fore-dk" x="-4.5" y="0" width="9" height="32" rx="3"/><rect class="v v-suit" x="-4.5" y="27" width="9" height="3" fill="#a9bccd"/><rect class="hand-dk" x="-5" y="30" width="10" height="10" rx="3"/></g></g>
+  <g id="c-lF"><rect class="pant-dk" x="-6.5" y="-2" width="13" height="52"/>
+    <g id="c-lF2"><rect class="pant-dk" x="-6" y="0" width="12" height="46"/><rect class="shoe" x="-7" y="42" width="21" height="9" rx="2" opacity=".85"/></g></g>
+  <g id="c-lN"><rect class="pant" x="-6.5" y="-2" width="13" height="52"/>
+    <g id="c-lN2"><rect class="pant" x="-6" y="0" width="12" height="46"/><rect class="shoe" x="-7" y="42" width="21" height="9" rx="2"/></g></g>
+  <rect class="skin-sh" x="45" y="70" width="12" height="18"/>
+  <polygon class="shirt" points="31,90 36,85 64,85 69,90 67,164 33,164"/>
+  <polygon class="shirt-sh" points="31,90 36,85 41,85 40,164 33,164"/>
+  <rect class="v v-coverall" x="49" y="86" width="2" height="78" fill="#2c4255"/><rect class="v v-coverall" x="53" y="99" width="10" height="9" fill="#324b60"/>
+  <rect class="v v-antic" x="49" y="86" width="2" height="78" fill="#b39528"/><rect class="v v-antic" x="31" y="118" width="8" height="4" fill="#c2185b"/>
+  <polygon class="v v-work" points="44,85 50,93 56,85" fill="#56728f"/><rect class="v v-work" x="53" y="100" width="9" height="9" fill="#56728f"/><rect class="v v-work" x="33" y="157" width="34" height="6" fill="#2a1d14"/>
+  <polygon class="v v-flannel" points="33,158 67,158 68,173 32,173" fill="url(#plaid)"/><polygon class="v v-flannel" points="46,85 50,92 54,85" fill="#2a2a2a"/>
+  <polygon class="v v-flannel" points="42,84 49,96 46,84" fill="#6e1f1e"/><polygon class="v v-flannel" points="58,84 51,96 54,84" fill="#6e1f1e"/>
+  <polygon class="v v-polo" points="43,84 50,91 57,84 55,81 45,81" fill="#235652"/><rect class="v v-polo" x="49" y="88" width="2" height="12" fill="#d9d2c0"/><rect class="v v-polo" x="33" y="158" width="34" height="5" fill="#3a2618"/>
+  <polygon class="v v-suit" points="33,158 67,158 67,172 33,172" fill="#1e2a44"/>
+  <polygon class="v v-suit" points="44,85 50,112 56,85" fill="#cfe0ee"/><polygon class="v v-suit" points="48.4,88 51.6,88 53,110 50,116 47,110" fill="#7a2131"/>
+  <polygon class="v v-suit" points="43,85 50,114 45,97 39,88" fill="#151e33"/><polygon class="v v-suit" points="57,85 50,114 55,97 61,88" fill="#151e33"/><circle class="v v-suit" cx="51" cy="132" r="1.5" fill="#0b1020"/>
+  <g class="v v-polo v-suit"><polygon points="44,85 47,85 48,128 46,128" fill="#3d6fd8"/><polygon points="56,85 53,85 52,128 54,128" fill="#c65c8c"/><rect x="43" y="126" width="13" height="17" fill="#f1ede2"/><rect x="45" y="134" width="5" height="5" fill="#14111b"/></g>
+  <rect class="skin-sh" x="35" y="38" width="6" height="11"/>
+  <polygon class="skin" points="38,28 43,16 62,16 67,28 67,50 61,64 43,64 38,50"/>
+  <polygon class="skin-sh" points="38,28 43,16 47,16 45,62 43,64 38,50"/>
+  <polygon class="skin-sh" points="62,36 68,47 62,48"/>
+  <g class="hairg"><polygon class="hair" points="38,30 40,18 46,12 61,12 67,19 67,25 62,20 54,21 46,20 41,24 41,34"/><rect class="hair" x="38" y="30" width="4" height="16"/></g>
+  <rect class="hair" x="47" y="33" width="8" height="2.6"/><rect class="hair" x="58" y="32.5" width="7" height="2.6"/>
+  <rect x="48" y="38" width="5" height="2.6" fill="#1a1412"/><rect x="59" y="38" width="4.5" height="2.6" fill="#1a1412"/>
+  <polygon class="beard" points="38,44 43,49 51,52 60,50 67,44 68,60 63,76 53,84 43,78 37,62"/>
+  <rect x="54" y="57" width="8" height="1.8" fill="#7a463b"/>
+  <polygon points="49,74 53,82 51,83 47,76" fill="#8d857c"/><polygon points="57,72 59,79 57,80" fill="#8d857c"/>
+  <g class="v v-coverall"><path d="M37 24 Q38 6 53 6 Q68 6 69 24 Z" fill="#efebe0"/><path d="M37 24 Q38 6 46 7 L44 24 Z" fill="#d4cfc1"/><rect x="33" y="22" width="42" height="5" rx="2" fill="#efebe0"/><rect x="40" y="14" width="27" height="3" fill="#c4532f"/></g>
+  <path class="v v-antic" d="M33 54 L33 24 Q34 5 53 5 Q71 5 72 24 L72 54 L67 54 L67 28 Q64 17 53 17 Q42 17 39 28 L38 54 Z" fill="#e4c34b"/>
+  <g id="c-aN"><rect class="sleeve" x="-5" y="-3" width="10" height="38" rx="4"/><rect class="skin v v-polo" x="-4.5" y="18" width="9" height="18"/>
+    <g id="c-aN2"><rect class="fore" x="-4.5" y="0" width="9" height="32" rx="3"/><rect class="v v-suit" x="-4.5" y="27" width="9" height="3" fill="#cfe0ee"/><rect class="v v-antic" x="-4.5" y="24" width="9" height="4" fill="#c2185b"/><rect class="hand" x="-5" y="30" width="10" height="10" rx="3"/>
+      <g class="it it-doc"><rect x="-4" y="26" width="26" height="34" fill="#f1ead8"/><rect x="0" y="33" width="18" height="2.5" fill="#8a8178"/><rect x="0" y="39" width="14" height="2.5" fill="#8a8178"/><rect x="0" y="45" width="17" height="2.5" fill="#8a8178"/><rect x="0" y="51" width="10" height="2.5" fill="#d0202a"/></g>
+      <g class="it it-binder"><rect x="-8" y="24" width="11" height="42" fill="#a3483b"/><rect x="-8" y="24" width="11" height="6" fill="#7c2f27"/></g>
+      <g class="it it-tablet"><rect x="-3" y="26" width="24" height="32" fill="#0d1622"/><rect x="0" y="29" width="18" height="26" fill="#38b6a8" opacity=".85"/></g>
+      <g class="it it-ribbon"><polygon points="-7,38 -2,38 -5,52 -11,50" fill="#7a2131"/><polygon points="2,38 7,38 11,50 5,52" fill="#7a2131"/><circle cx="0" cy="56" r="12" fill="#c98a3a"/><circle cx="0" cy="56" r="7.5" fill="#e0a85a"/></g>
+    </g></g>
+</g></g></g>`;
+
+/* ---------- poses (degrees; 0 = limb hanging down) ---------- */
+const POSE = {
+  stand:{aN:[4,-8],aF:[-4,-8],lN:[-3,3],lF:[3,2]},
+  crouch:{aN:[14,-70],aF:[-6,-70],lN:[-32,62],lF:[22,52],y:-12},
+  suitup:{aN:[-150,-35],aF:[-115,-70],lN:[-14,4],lF:[14,6]},
+  read:{aN:[-50,-100],aF:[-28,-110],lN:[-3,3],lF:[3,2]},
+  point:{aN:[-158,8],aF:[22,-40],lN:[-12,4],lF:[10,4],lean:3},
+  present:{aN:[-92,-12],aF:[10,-24],lN:[-14,4],lF:[10,4]},
+  hips:{aN:[-38,108],aF:[34,-104],lN:[-12,2],lF:[12,2]},
+  triumph:{aN:[-176,-4],aF:[26,-46],lN:[-16,4],lF:[16,6],y:-2},
+  alarm:{aN:[-125,-55],aF:[-100,-75],lN:[-22,32],lF:[26,12],lean:-7,y:-4},
+  type:{aN:[-48,-62],aF:[-38,-72],lN:[-3,3],lF:[3,2]},
+  tie:{aN:[-14,-158],aF:[4,-8],lN:[-6,3],lF:[6,2]},
+  command:{aN:[-90,-4],aF:[8,-14],lN:[-12,4],lF:[10,4]},
+  shake:{aN:[-62,-28],aF:[4,-8],lN:[-6,3],lF:[6,2]}
+};
+const WALK = [
+  {aN:[24,-12],aF:[-24,-20],lN:[-26,8],lF:[22,24],y:-6},
+  {aN:[3,-14],aF:[-3,-14],lN:[-4,6],lF:[8,52]},
+  {aN:[-24,-20],aF:[24,-12],lN:[22,24],lF:[-26,8],y:-6},
+  {aN:[-3,-14],aF:[3,-14],lN:[8,52],lF:[-4,6]}
+];
+
+/* ---------- the story, segment by segment ---------- */
+const TL = [
+  /* Each beat is one swipe. cap.k = small label, cap.b = skill bullets (keep them short). */
+  {scene:"horizon", len:1, reel:0, acc:"--dawn", act:"Norfolk Naval Shipyard", beats:[
+    {at:0, o:"coverall", x:200, s:.3, sil:true,
+     title:{k:"A career in three acts", b:"Stephen L. Campbell", s:"Naval nuclear trades → AI engineering"},
+     cap:{k:"17 years · 3 acts", l:"Naval nuclear work, then one hackathon changed the job.", hint:"Swipe to play"}}]},
+
+  {len:.6, reel:1, acc:"--dawn", act:"Act I", beats:[{at:0, card:{n:"Act I", t:"The Yard", s:"Nuclear Sheetmetal Mechanic · 7 years"}}]},
+
+  {scene:"dawn", len:2.8, pan:260, reel:1, acc:"--dawn", act:"The Yard", years:[1,7], beats:[
+    {at:0, o:"coverall", x:160, walk:true,
+     cap:{k:"Nuclear Sheetmetal Mechanic", b:["Naval nuclear repair","Drydock and shipyard trades"]}},
+    {at:.25, o:"antic", x:160, pose:"suitup",
+     cap:{k:"Radiological controlled area", b:["Contamination control to NAVSEA standards","Radiological work practices"]}},
+    {at:.5, o:"coverall", x:160, pose:"read", item:"doc",
+     cap:{k:"Controlled work documents", b:["Reading technical documents","Procedural compliance","Quality signoffs"]}},
+    {at:.75, hide:true, ov:["eyes"],
+     cap:{k:"What the yard taught", b:["Attention to detail","Critical thinking","Work ethic"]}}]},
+
+  {len:.6, reel:2, acc:"--sun", act:"Act II", beats:[{at:0, card:{n:"Act II", t:"The Long Climb", s:"Continuous Training & Development · 10 years"}}]},
+
+  {scene:"shop", len:.8, pan:100, reel:2, acc:"--sun", act:"The Long Climb", years:[8,9], beats:[
+    {at:0, o:"work", x:150, pose:"stand", item:"binder",
+     cap:{k:"Role 1 of 4 · Subject Matter Expert", b:["Subject matter expertise","Technical training content","Knowledge transfer"]}}]},
+
+  {scene:"class", len:.8, pan:80, reel:2, acc:"--sun", act:"The Long Climb", years:[9,11], beats:[
+    {at:0, o:"flannel", x:100, pose:"point",
+     cap:{k:"Role 2 of 4 · Instructor", b:["Technical instruction","Public speaking","Coaching and assessment"]}}]},
+
+  {scene:"office", len:2.8, pan:160, reel:2, acc:"--sun", act:"The Long Climb", years:[11,15], beats:[
+    {at:0, o:"polo", x:120, pose:"present", ov:["pkg"],
+     cap:{k:"Role 3 of 4 · Coordinator", b:["Course development","Instructional design","Technical writing"]}},
+    {at:.25, o:"polo", x:120, pose:"command", ov:["concur"],
+     cap:{k:"Concurrence", b:["Stakeholder management","Briefing leadership","2-year review cycles"]}},
+    {at:.5, o:"polo", x:120, pose:"read", item:"doc", ov:["oqe"],
+     cap:{k:"Audit & OQE", b:["Compliance auditing","Records management","Objective quality evidence"]}},
+    {at:.75, o:"polo", x:110, pose:"point", ov:["rca"],
+     cap:{k:"Root cause", b:["Root cause analysis with QA","Corrective actions","Lean Six Sigma Green Belt"]}}]},
+
+  {scene:"war", len:2.1, pan:120, reel:2, acc:"--sun", act:"The Long Climb", years:[16,17], beats:[
+    {at:0, o:"polo", x:110, pose:"hips", ov:["team4"],
+     cap:{k:"Role 4 of 4 · Acting CTD Leader", b:["Team leadership (team of 4)","Operations","Workload planning"]}},
+    {at:.34, o:"polo", x:110, pose:"command", ov:["team6","migr"], dyn:"migr",
+     cap:{k:"Waypoints LMS migration", b:["Led a 6-person migration team","Data migration","Change management"]}},
+    {at:.67, o:"polo", x:110, pose:"present", ov:["lms"],
+     cap:{k:"LMS build", b:["Built codes, events and certifications","System configuration","LMS administration"]}}]},
+
+  {scene:"incident", len:1.2, reel:3, acc:"--alarm", act:"The Break", yr:"!!", beats:[
+    {at:0, card:{n:"", t:"Incident", s:"", red:true}, flash:true},
+    {at:.5, o:"polo", x:200, pose:"alarm", sil:true,
+     cap:{k:"Every incident", l:"Interview. Write up. Compile. Find the cause. Weeks of work."}}]},
+
+  {scene:"hack", len:3.2, reel:3, acc:"--alarm", act:"Hackathon", beats:[
+    {at:0, o:"polo", x:170, pose:"type",
+     cap:{k:"Shipyard hackathon", b:["Built a team of 3 AI agents","Automated investigation groundwork"]}},
+    {at:.2, hide:true, ov:["p1"],
+     cap:{k:"Agent 01 · Interviewer", b:["Interviews everyone involved","Writes each Investigator's Package (IIP)"]}},
+    {at:.4, hide:true, ov:["p1","p2"],
+     cap:{k:"Agent 02 · Compiler", b:["Merges every IIP into one Master Package (MIP)"]}},
+    {at:.6, hide:true, ov:["p1","p2","p3"],
+     cap:{k:"Agent 03 · Analyst", b:["Supports root cause analysis","Proposes corrective actions"]}},
+    {at:.8, o:"polo", x:200, pose:"triumph", item:"ribbon", ov:["medal"],
+     cap:{k:"Result · 3rd place", b:["Multi-agent design","Agent orchestration","Prompt engineering"]}}]},
+
+  {scene:"bots", len:.8, pan:80, reel:3, acc:"--alarm", act:"BOTS Team", beats:[
+    {at:0, o:"polo", x:150, pose:"type",
+     cap:{k:"BOTS team developer", b:["AI agent gallery for all production codes","Built with 2 other developers","Cross-department delivery"]}}]},
+
+  {len:.6, reel:4, acc:"--tide", act:"Act III", beats:[{at:0, card:{n:"Act III", t:"Code 700", s:"Lead Forward Deployed Engineer · Now"}}]},
+
+  {scene:"night", len:4.2, pan:300, reel:4, acc:"--tide", act:"Code 700", yr:"Now", beats:[
+    {at:0, o:"suit", x:110, pose:"tie", flash:true,
+     cap:{k:"Lead Forward Deployed Engineer", b:["Leads all Code 700 AI initiatives","AI strategy","Technical leadership"]}},
+    {at:.16, o:"suit", x:110, pose:"command", ov:["gallery"],
+     cap:{k:"Code 700 agent gallery", b:["Agent development","Requirements gathering","Solution delivery"]}},
+    {at:.32, o:"suit", x:110, pose:"read", item:"tablet", ov:["qa"],
+     cap:{k:"QA agent", b:["Domain-specific AI agents","Information sorting and analysis"]}},
+    {at:.48, o:"suit", x:110, pose:"present", ov:["pm"],
+     cap:{k:"In progress · Predictive maintenance", b:["Predictive analytics","Flags equipment trouble early"]}},
+    {at:.64, o:"suit", x:110, pose:"point", ov:["drone"],
+     cap:{k:"Exploring · Drone inspection", b:["Computer vision","Drone inspection R&D"]}},
+    {at:.8, o:"suit", x:110, pose:"shake", ov:["partners"],
+     cap:{k:"Forward deployed", b:["Works with Palantir, Gameplan and AIR","Turns shipyard needs into working systems"]}}]},
+
+  {scene:"horizon", len:1, reel:4, acc:"--tide", act:"End of Act III", yr:"Now", beats:[
+    {at:0, o:"suit", x:200, s:.8, pose:"stand",
+     title:{k:"Seventeen years in the making", b:"Stephen L. Campbell", s:"Lead Forward Deployed Engineer · Code 700"},
+     cap:{k:"Next", l:"The deckplate, the classroom, and now the code.", hint:"Swipe for contact"}}]}
+];
+
+/* ---------- build the picture ---------- */
+const svg = $("pic");
+svg.innerHTML = DEFS + horizon() + dock("dawn", false) + shop() + classroom() + office() + warroom() + incident() + hack() + bots() + dock("night", true) + CHAR + classroomFg();
+
+const SCN = {};
+svg.querySelectorAll(".scn").forEach(g => {
+  const id = g.id.slice(2);
+  SCN[id] = { el:g, fg:document.getElementById("fg-" + id),
+    layers:[...g.querySelectorAll(":scope > .L")].map(l => ({el:l, f:parseFloat(l.dataset.f)})),
+    ovs:[...g.querySelectorAll("[data-ov]")] };
+});
+const J = {}; ["body","aN","aN2","aF","aF2","lN","lN2","lF","lF2"].forEach(k => J[k] = document.getElementById("c-" + k));
+const ch = $("ch"), chw = $("chw"), migr = document.getElementById("migr");
+const PIV = {aN:[62,94], aF:[38,94], lN:[55,160], lF:[45,160]};
+
+function setPose(p){
+  for (const k of ["aN","aF","lN","lF"]){
+    J[k].setAttribute("transform", `translate(${PIV[k][0]} ${PIV[k][1]}) rotate(${p[k][0]})`);
+    J[k+"2"].setAttribute("transform", `translate(0 ${k[0] === "a" ? 34 : 48}) rotate(${p[k][1]})`);
+  }
+  J.body.setAttribute("transform", `translate(0 ${-(p.y || 0)}) rotate(${p.lean || 0} 50 255)`);
+}
+
+/* ---------- timeline math ---------- */
+let TOTAL = 0;
+TL.forEach(s => {
+  s.start = TOTAL; TOTAL += s.len;
+  s.beats.forEach((b,i) => b.end = i + 1 < s.beats.length ? s.beats[i+1].at : 1);
+});
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const stage = $("stage"), story = $("story"), scroller = $("scroller"), creditsPanel = $("credits-panel");
+// One "screen" of story = one frame width. STOPS = scroll positions of every beat, then the credits.
+let unit = 0, STOPS = [];
+function size(){
+  const w = scroller.clientWidth;
+  if (!w || w === unit) return;
+  const p = unit ? scroller.scrollLeft / unit : 0;
+  unit = w;
+  story.style.width = (TOTAL * unit + w) + "px";
+  story.querySelectorAll(".snap-pt").forEach(n => n.remove());
+  STOPS = [];
+  TL.forEach(s => s.beats.forEach(b => {
+    const x = Math.round((s.start + b.at * s.len) * unit) + (s.start + b.at > 0 ? 4 : 0);
+    STOPS.push(x);
+    const pt = document.createElement("i"); pt.className = "snap-pt"; pt.style.left = x + "px"; story.appendChild(pt);
+  }));
+  STOPS.push(TOTAL * unit + w);
+  scroller.scrollLeft = p * unit;
+}
+// Mouse wheel and keyboard step one beat at a time (touch swipes snap natively).
+let stepLock = 0;
+function step(d){
+  const now = Date.now(); if (now < stepLock) return; stepLock = now + 420;
+  const x = scroller.scrollLeft; let i = 0;
+  STOPS.forEach((s,k) => { if (s <= x + 6) i = k; });
+  const to = STOPS[Math.min(Math.max(i + d, 0), STOPS.length - 1)];
+  scroller.scrollTo({left:to, behavior: reduce ? "auto" : "smooth"});
+}
+scroller.addEventListener("wheel", e => {
+  if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+  if (e.target.closest && e.target.closest("#credits-panel")){
+    const cp = creditsPanel;
+    if (e.deltaY > 0 && cp.scrollTop + cp.clientHeight < cp.scrollHeight - 1) return;
+    if (e.deltaY < 0 && cp.scrollTop > 0) return;
+  }
+  e.preventDefault(); step(Math.sign(e.deltaY));
+}, {passive:false});
+addEventListener("keydown", e => {
+  if (e.target.closest && e.target.closest("a,button,input,textarea")) return;
+  const k = e.key;
+  if (["ArrowRight","PageDown"," "].includes(k) || (k === "ArrowDown" && !e.target.closest("#credits-panel"))){ e.preventDefault(); step(1); }
+  else if (["ArrowLeft","PageUp"].includes(k) || (k === "ArrowUp" && !e.target.closest("#credits-panel"))){ e.preventDefault(); step(-1); }
+});
+
+let curScene = null, curSeg = null, curBeat = null, poseTimer = 0, lastWalk = -1;
+
+function showScene(id){
+  if (id === curScene || !id) return;
+  for (const k in SCN){ SCN[k].el.style.display = k === id ? "" : "none"; if (SCN[k].fg) SCN[k].fg.style.display = k === id ? "" : "none"; }
+  curScene = id;
+}
+function flash(){
+  if (reduce) return;
+  stage.classList.remove("flash"); void stage.offsetWidth; stage.classList.add("flash");
+  setTimeout(() => stage.classList.remove("flash"), 260);
+}
+function placeChar(b){
+  const s = b.s || .72, x = b.x || 200;
+  chw.setAttribute("transform", `translate(${x - 50*s} ${400 - 258*s}) scale(${s})`);
+  chw.style.display = b.hide ? "none" : "";
+  ch.dataset.o = b.o || "coverall";
+  ch.dataset.item = b.item || "";
+  ch.classList.toggle("sil", !!b.sil);
+}
+function esc(t){ return String(t).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c])); }
+
+function applyBeat(seg, b, prev){
+  stage.style.setProperty("--acc", `var(${seg.acc})`);
+  $("act").textContent = seg.act || "";
+  [...$("reel").children].forEach((li,i) => li.classList.toggle("on", i + 1 === seg.reel));
+
+  const card = $("card");
+  if (b.card){
+    card.hidden = false;
+    card.className = "card" + (b.card.red ? " red" + (reduce ? "" : " shake") : "");
+    $("card-n").textContent = b.card.n; $("card-t").textContent = b.card.t; $("card-s").textContent = b.card.s;
+    $("card-n").hidden = !b.card.n; $("card-s").hidden = !b.card.s;
+    [$("card-n"),$("card-t"),$("card-s")].forEach(el => { el.classList.remove("snap"); void el.offsetWidth; el.classList.add("snap"); });
+    if (b.flash) flash();
+    return;
+  }
+  card.hidden = true;
+  showScene(seg.scene);
+
+  // overlays
+  const want = b.ov || [];
+  SCN[seg.scene].ovs.forEach(g => g.style.display = want.includes(g.dataset.ov) ? "" : "none");
+
+  // title
+  const ttl = $("ttl");
+  if (b.title){ ttl.hidden = false; $("ttl-k").textContent = b.title.k; $("ttl-b").textContent = b.title.b; $("ttl-s").textContent = b.title.s; ttl.classList.remove("snap"); void ttl.offsetWidth; ttl.classList.add("snap"); }
+  else ttl.hidden = true;
+
+  // caption
+  const c = b.cap || {};
+  $("cap").innerHTML =
+    (c.k ? `<p class="k snap">${esc(c.k)}</p>` : "") +
+    (c.l ? `<p class="l snap">${esc(c.l)}</p>` : "") +
+    (c.b && c.b.length ? `<ul class="pts">${c.b.map((t,i) => `<li style="--i:${i}">${esc(t)}</li>`).join("")}</ul>` : "") +
+    (c.hint ? `<span class="hint">${esc(c.hint)} <b class="sw">◀</b></span>` : "");
+
+  // character: snap pose to pose, with one anticipation frame
+  placeChar(b);
+  clearTimeout(poseTimer);
+  if (!b.walk){
+    const target = POSE[b.pose || "stand"];
+    const samePose = prev && !prev.walk && prev.pose === b.pose && !prev.card;
+    if (!reduce && !samePose && !b.hide){ setPose(POSE.crouch); poseTimer = setTimeout(() => setPose(target), 90); }
+    else setPose(target);
+  }
+  lastWalk = -1;
+  if (b.flash) flash();
+}
+
+function update(){
+  ticking = false;
+  if (!unit) return;
+  const sx = scroller.scrollLeft;
+  const p = Math.min(Math.max(sx / unit, 0), TOTAL - 1e-4);
+  let seg = TL[0];
+  for (const s of TL) if (p >= s.start) seg = s;
+  const t = (p - seg.start) / seg.len;
+  let b = seg.beats[0];
+  for (const bb of seg.beats) if (t >= bb.at) b = bb;
+
+  if (b !== curBeat){ const prev = curBeat; curBeat = b; curSeg = seg; applyBeat(seg, b, prev); }
+
+  if (seg.scene && SCN[seg.scene] && !b.card){
+    const pan = (seg.pan || 0) * t;
+    SCN[seg.scene].layers.forEach(l => l.el.setAttribute("transform", `translate(${(-pan * l.f).toFixed(1)} 0)`));
+  }
+  if (b.walk){
+    const f = Math.floor(sx / 22) % 4;
+    if (f !== lastWalk){ lastWalk = f; setPose(WALK[f]); }
+  }
+  if (b.dyn === "migr" && migr){
+    const k = Math.min(Math.max((t - b.at) / ((b.end - b.at) * .85), 0), 1);
+    migr.setAttribute("width", (300 * k).toFixed(1));
+  }
+  const yr = $("yr");
+  yr.textContent = seg.years ? "Year " + String(Math.round(seg.years[0] + (seg.years[1] - seg.years[0]) * t)).padStart(2, "0") : (seg.yr || "");
+}
+
+let ticking = false;
+scroller.addEventListener("scroll", () => { if (!ticking){ ticking = true; requestAnimationFrame(update); } }, {passive:true});
+addEventListener("resize", () => { size(); update(); });
+size(); update();
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { size(); update(); });
+})();
+</script>
+
+</body></html>
